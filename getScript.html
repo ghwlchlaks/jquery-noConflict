@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+</head>
+<body>
+    <script>
+        // jquery version 1.12.4 , jquery-ui version 1.8.23
+        console.log('jquery version : ', $.fn.jquery,  'jquery ui version : ', $.ui.version);
+        
+        jq341 = $.noConflict(true);
+        jq341.getScript('jquery-3.4.1.js', function() {
+            jq341.getScript('jquery-ui.js', function() {
+                // jquery version 3.4.1 , jquery-ui version 1.12.1
+                console.log('change jquery version : ', $.fn.jquery, 'change jquery ui version : ', $.ui.version)
+            });
+        })  
+
+        
+        console.log('origin jquery version', jq341.fn.jquery, 'origin jquery ui version : ', jq341.ui.version);
+    </script>
+
+    <script>
+
+
+            
+            $.getScript('jquery-3.4.1.js', function() {
+                jq341 = $.noConflict(true);
+                $.getScript('jquery-ui.js', function() {
+                    // jquery version 1.12.4 , jquery-ui version 1.8.23
+                    console.log('jquery version : ', $.fn.jquery,  'jquery ui version : ', $.ui.version);
+                    // jquery version 3.4.1 , jquery-ui version 1.12.1
+                    console.log('change jquery version : ', jq341.fn.jquery, 'change jquery ui version : ', jq341.ui.version)
+                });
+            })  
+
+            
+    </script>
+</body>
+
+</html>
